@@ -75,6 +75,7 @@ const copy = selection => {
       css += `line-height: ${num(node.lineSpacing)}px;\n`;
     }
     css += `text-align: ${node.textAlign};\n`;
+    css += `@include font(${num(textStyles.fontSize)}, ${num(node.lineSpacing)}, ${num(textStyles.charSpacing)}, ${styleToWeight(textStyles.fontStyle)});\n`;
   }
 
   let hasBgBlur = (node.blur && node.blur.visible && node.blur.isBackgroundEffect);
@@ -140,6 +141,8 @@ const copy = selection => {
       css += `filter: ${blur.blurAmount}px;\n`;
     }
   }
+
+
   textArea.value = css;
 }
 
